@@ -40,14 +40,14 @@ public class JpaMain {
             - SQL : 데이터베이스 테이블을 대상으로 하는 쿼리
             - JPQL : 엔티티 객체를 대상으로 하는 쿼리
              */
-//            List<Member> result = em.createQuery("select m from Member as m where m.id = 1", Member.class)
-//                    .setFirstResult(0)
-//                    .setMaxResults(10)
-//                    .getResultList();
-//
-//            for (Member member : result) {
-//                System.out.println("member.name : " + member.getName());
-//            }
+            List<Member> result = em.createQuery("select m from Member as m where m.id = 1", Member.class)
+                    .setFirstResult(0)
+                    .setMaxResults(10)
+                    .getResultList();
+
+            for (Member member : result) {
+                System.out.println("member.name : " + member.getName());
+            }
 
             et.commit();
         } catch (Exception e) {
