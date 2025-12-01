@@ -1,6 +1,8 @@
-package book;
+package jpa2.practice;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Member {
@@ -8,10 +10,17 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Long id;
+
     private String name;
+
     private String city;
-    private String streat;
+
+    private String street;
+
     private String zipcode;
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -37,12 +46,12 @@ public class Member {
         this.city = city;
     }
 
-    public String getStreat() {
-        return streat;
+    public String getStreet() {
+        return street;
     }
 
-    public void setStreat(String streat) {
-        this.streat = streat;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getZipcode() {
@@ -51,5 +60,13 @@ public class Member {
 
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

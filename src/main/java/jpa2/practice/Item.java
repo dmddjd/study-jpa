@@ -1,4 +1,4 @@
-package book;
+package jpa2.practice;
 
 import javax.persistence.*;
 
@@ -8,8 +8,11 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_id")
     private Long id;
+
     private String name;
+
     private int price;
+
     private int stockQuantity;
 
     public Long getId() {

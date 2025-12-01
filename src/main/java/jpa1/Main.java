@@ -1,4 +1,4 @@
-package practice;
+package jpa1;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
