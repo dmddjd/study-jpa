@@ -1,4 +1,4 @@
-//package practice1;
+//package jpa1;
 //
 //import javax.persistence.*;
 //

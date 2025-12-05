@@ -76,10 +76,22 @@ public class Main {
 ////            em.flush();
 ////            em.close();
 
-            et.commit();
-        } catch (Exception e) {
+        Member member = new Member();
+        member.setUserName("member1");
+        em.persist(member);
+
+        Team team = new Team();
+        team.setTeamName("team1");
+//        member.setTeam(team);
+//        team.getMembers().add(member);
+        member.setTeam(team);
+        em.persist(team);
+
+        et.commit();
+        } catch (Exception e){
+            System.err.println(e.getMessage());
             et.rollback();
-        } finally {
+        }finally {
             em.close();
         }
         emf.close();
