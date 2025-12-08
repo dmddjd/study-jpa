@@ -1,9 +1,10 @@
 //package jpa2.practice;
 //
 //import javax.persistence.*;
+//import java.util.List;
 //
 //@Entity
-//public class Item {
+//public class Items {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column(name = "item_id")
@@ -14,6 +15,9 @@
 //    private int price;
 //
 //    private int stockQuantity;
+//
+//    @ManyToMany(mappedBy = "items")
+//    private List<Category> categories;
 //
 //    public Long getId() {
 //        return id;

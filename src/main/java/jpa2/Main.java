@@ -74,18 +74,30 @@ public class Main {
 ////            em.persist(team);
 ////
 ////            em.flush();
-////            em.close();
+//            em.close();
 
-        Member member = new Member();
-        member.setUserName("member1");
-        em.persist(member);
-
-        Team team = new Team();
-        team.setTeamName("team1");
-//        member.setTeam(team);
+//        Member member = new Member();
+//        member.setUserName("member1");
+//        em.persist(member);
+//
+//        Team team = new Team();
+//        team.setTeamName("team1");
 //        team.getMembers().add(member);
-        member.setTeam(team);
-        em.persist(team);
+//        em.persist(team);
+
+        Movie movie = new Movie();
+        movie.setDirector("director1");
+        movie.setActor("actor1");
+        movie.setName("movie1");
+        movie.setPrice(10000);
+
+        em.persist(movie);
+
+        em.flush();
+        em.clear();
+
+        Movie findMovie = em.find(Movie.class, movie.getId());
+        System.out.println("findMovie : " + findMovie);
 
         et.commit();
         } catch (Exception e){

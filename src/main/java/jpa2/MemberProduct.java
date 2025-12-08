@@ -17,9 +17,8 @@ public class MemberProduct {
     @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
-    private int count;
-
     private int price;
-
+    private int count;
     private LocalDateTime orderDateTime;
+
 }

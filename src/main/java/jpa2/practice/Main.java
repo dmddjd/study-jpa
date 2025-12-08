@@ -13,16 +13,17 @@
 //        et.begin();
 //
 //        try {
-//            Order order = new Order();
-//            order.addOrderItem(new OrderItem());
-//            em.persist(order);
-//
-//            OrderItem orderItem = new OrderItem();
-//            orderItem.setOrder(order);
-//            em.persist(orderItem);
+////            Order order = new Order();
+////            order.addOrderItem(new OrderItem());
+////            em.persist(order);
+////
+////            OrderItem orderItem = new OrderItem();
+////            orderItem.setOrder(order);
+////            em.persist(orderItem);
 //
 //            et.commit();
 //        } catch(Exception e) {
+//            System.err.println(e.getMessage());
 //            et.rollback();
 //        } finally {
 //            em.close();
