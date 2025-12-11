@@ -1,9 +1,11 @@
 package jpa2;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import jpa2.Member;
+import org.hibernate.Hibernate;
+import org.hibernate.annotations.Parent;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Main {
@@ -85,25 +87,93 @@ public class Main {
 //        team.getMembers().add(member);
 //        em.persist(team);
 
-        Movie movie = new Movie();
-        movie.setDirector("director1");
-        movie.setActor("actor1");
-        movie.setName("movie1");
-        movie.setPrice(10000);
+//        Movie movie = new Movie();
+//        movie.setDirector("director1");
+//        movie.setActor("actor1");
+//        movie.setName("movie1");
+//        movie.setPrice(10000);
+//
+//        em.persist(movie);
+//
+//        em.flush();
+//        em.clear();
+//
+//        Item findItems = em.find(Item.class, movie.getId());
+//        System.out.println("findItems : " + findItems);
+//
 
-        em.persist(movie);
+//        Member member = new Member();
+//        member.setUserName("userA");
+//        member.setCreatedBy("memberA");
+//        member.setCreatedDate(LocalDateTime.now());
+//        em.persist(member);
+//
+//        em.flush();
+//        em.clear();
 
-        em.flush();
-        em.clear();
+            // 프록시
+//            Member member1 = new Member();
+//            member1.setUserName("member1");
+//            em.persist(member1);
+//
+//            Member member2 = new Member();
+//            member2.setUserName("member2");
+//            em.persist(member2);
 
-        Movie findMovie = em.find(Movie.class, movie.getId());
-        System.out.println("findMovie : " + findMovie);
+//            Member refMember = em.getReference(Member.class, member1.getId());
+//            System.out.println("refMember : " + refMember.getClass());
+////            Hibernate.initialize(refMember); // 강제 초기화
+//            System.out.println("isLoaded : " + emf.getPersistenceUnitUtil().isLoaded(refMember));
 
-        et.commit();
-        } catch (Exception e){
-            System.err.println(e.getMessage());
+            // 즉시 로딩과 지연 로딩
+//            Team team1 = new Team();
+//            team1.setTeamName("team1");
+//            member1.setTeam(team1);
+//            em.persist(team1);
+//
+//            Team team2 = new Team();
+//            team2.setTeamName("team2");
+//            member2.setTeam(team2);
+//            em.persist(team2);
+//
+//            em.flush();
+//            em.clear();
+
+//            Member m = em.find(Member.class, member1.getId());
+//            System.out.println("m : " + m.getTeam().getClass());
+//
+//            System.out.println("============");
+//            System.out.println("teamName : " + m.getTeam().getTeamName());
+//            System.out.println("============");
+
+//            List<Member> members = em.createQuery("select m from Member m join fetch m.team", Member.class)
+//                    .getResultList();
+
+            // 영속성 전이 CASCADE
+            Child child1 = new Child();
+            Child child2 = new Child();
+
+            Parent parent = new Parent();
+            parent.addChild(child1);
+            parent.addChild(child2);
+
+//            em.persist(child1);
+//            em.persist(child2);
+            em.persist(parent);
+
+            em.flush();
+            em.clear();
+
+            // 고아 객체
+            Parent findParent = em.find(Parent.class, parent.getId());
+//            findParent.getChildList().remove(0);
+            em.remove(findParent);
+
+            et.commit();
+        } catch(Exception e) {
             et.rollback();
-        }finally {
+            e.printStackTrace();
+        } finally {
             em.close();
         }
         emf.close();

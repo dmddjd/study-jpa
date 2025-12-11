@@ -3,7 +3,7 @@
 //import javax.persistence.*;
 //
 //@Entity
-//public class OrderItem {
+//public class OrderItem extends BaseEntity{
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column(name = "order_item_id")
@@ -15,13 +15,13 @@
 ////    @Column(name = "item_id")
 ////    private Long itemId;
 //
-//    @ManyToOne
+//    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "order_id")
 //    private Order order;
 //
-//    @ManyToOne
+//    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "item_id")
-//    private Items item;
+//    private Item item;
 //
 //    private int orderPrice;
 //
@@ -59,11 +59,11 @@
 //        this.order = order;
 //    }
 //
-//    public Items getItem() {
+//    public Item getItem() {
 //        return item;
 //    }
 //
-//    public void setItem(Items item) {
+//    public void setItem(Item item) {
 //        this.item = item;
 //    }
 //

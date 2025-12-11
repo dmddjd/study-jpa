@@ -4,6 +4,7 @@
 //import javax.persistence.EntityManagerFactory;
 //import javax.persistence.EntityTransaction;
 //import javax.persistence.Persistence;
+//import java.awt.print.Book;
 //
 //public class Main {
 //    public static void main(String[] args) {
@@ -20,6 +21,11 @@
 ////            OrderItem orderItem = new OrderItem();
 ////            orderItem.setOrder(order);
 ////            em.persist(orderItem);
+//
+//            Book book = new Book();
+//            book.setName("Book1");
+//            book.setAuthor("Author1");
+//            em.persist(book);
 //
 //            et.commit();
 //        } catch(Exception e) {
