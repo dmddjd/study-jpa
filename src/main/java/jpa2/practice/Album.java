@@ -3,7 +3,7 @@
 //import javax.persistence.Entity;
 //
 //@Entity
-//public class Album extends Item {
+//public class Album extends Items {
 //    private String artist;
 //    private String etc;
 //

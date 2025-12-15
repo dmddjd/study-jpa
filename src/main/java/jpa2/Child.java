@@ -1,7 +1,5 @@
 package jpa2;
 
-import org.hibernate.annotations.Parent;
-
 import javax.persistence.*;
 
 @Entity

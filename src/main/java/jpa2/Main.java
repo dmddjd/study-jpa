@@ -2,7 +2,6 @@ package jpa2;
 
 import jpa2.Member;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.Parent;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -98,7 +97,7 @@ public class Main {
 //        em.flush();
 //        em.clear();
 //
-//        Item findItems = em.find(Item.class, movie.getId());
+//        Items findItems = em.find(Items.class, movie.getId());
 //        System.out.println("findItems : " + findItems);
 //
 
@@ -164,7 +163,7 @@ public class Main {
             em.flush();
             em.clear();
 
-            // 고아 객체
+//            // 고아 객체
             Parent findParent = em.find(Parent.class, parent.getId());
 //            findParent.getChildList().remove(0);
             em.remove(findParent);

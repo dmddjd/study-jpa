@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("A")
-public class Album extends Item {
+public class Album extends Items {
     private String artist;
 
     public String getArtist() {

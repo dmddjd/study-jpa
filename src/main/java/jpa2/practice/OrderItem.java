@@ -21,7 +21,7 @@
 //
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "item_id")
-//    private Item item;
+//    private Items item;
 //
 //    private int orderPrice;
 //
@@ -59,11 +59,11 @@
 //        this.order = order;
 //    }
 //
-//    public Item getItem() {
+//    public Items getItem() {
 //        return item;
 //    }
 //
-//    public void setItem(Item item) {
+//    public void setItem(Items item) {
 //        this.item = item;
 //    }
 //

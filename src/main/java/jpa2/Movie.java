@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("M")
-public class Movie extends Item {
+public class Movie extends Items {
     private String director;
 
     private String actor;

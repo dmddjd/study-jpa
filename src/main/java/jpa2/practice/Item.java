@@ -6,7 +6,7 @@
 //@Entity
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@DiscriminatorColumn
-//public abstract class Item extends BaseEntity{
+//public abstract class Items extends BaseEntity{
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column(name = "item_id")
