@@ -28,10 +28,31 @@ public class Main {
 //            System.out.println("b2 : " + b2);
 
             // 임베디드 타입
-            Member member = new Member();
-            member.setUserName("user1");
-            member.setHomeAddress(new Address("city", "street", "zipcode"));
-//            member.setWorkPeriod(new Period());
+//            Address address = new Address("city", "street", "zipcode");
+//
+//            Member member1 = new Member();
+//            member1.setUserName("member1");
+//            member1.setHomeAddress(address);
+//            em.persist(member1);
+
+//            Address copyAddress = new Address(address.getCity(), address.getStreet(), address.getZipcode());
+//            Member member2 = new Member();
+//            member2.setUserName("member1");
+//            member2.setHomeAddress(copyAddress);
+//            em.persist(member2);
+
+//            member1.getHomeAddress().setCity("newCity");
+
+            // 값 타입 비교
+            int a = 10;
+            int b = 10;
+            System.out.println("a == b : " + (a == b));
+
+            Address address1 = new Address("city", "street", "zipcode");
+            Address address2 = new Address("city", "street", "zipcode");
+
+            System.out.println("address1 == address2 : " + (address1 == address2));
+            System.out.println("address1 equals address2 : " + (address1.equals(address2)));
 
             et.commit();
         } catch (Exception e){
