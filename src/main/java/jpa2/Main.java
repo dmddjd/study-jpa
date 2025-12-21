@@ -1,11 +1,6 @@
 //package jpa2;
 //
-//import jpa2.Member;
-//import org.hibernate.Hibernate;
-//
 //import javax.persistence.*;
-//import java.time.LocalDateTime;
-//import java.util.List;
 //
 //public class Main {
 //    public static void main(String[] args) {
@@ -149,24 +144,24 @@
 ////                    .getResultList();
 //
 //            // 영속성 전이 CASCADE
-//            Child child1 = new Child();
-//            Child child2 = new Child();
-//
-//            Parent parent = new Parent();
-//            parent.addChild(child1);
-//            parent.addChild(child2);
-//
-////            em.persist(child1);
-////            em.persist(child2);
-//            em.persist(parent);
-//
-//            em.flush();
-//            em.clear();
+////            Child child1 = new Child();
+////            Child child2 = new Child();
+////
+////            Parent parent = new Parent();
+////            parent.addChild(child1);
+////            parent.addChild(child2);
+////
+//////            em.persist(child1);
+//////            em.persist(child2);
+////            em.persist(parent);
+////
+////            em.flush();
+////            em.clear();
 //
 ////            // 고아 객체
-//            Parent findParent = em.find(Parent.class, parent.getId());
-////            findParent.getChildList().remove(0);
-//            em.remove(findParent);
+////            Parent findParent = em.find(Parent.class, parent.getId());
+//////            findParent.getChildList().remove(0);
+////            em.remove(findParent);
 //
 //            et.commit();
 //        } catch(Exception e) {

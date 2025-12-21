@@ -1,4 +1,4 @@
-package jpa2.practice;
+package practice;
 
 public enum OrderStatus {
     ORDER, CANCEL
