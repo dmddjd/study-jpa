@@ -30,4 +30,12 @@ public class Team {
     public void setTeamName(String teamName) {
         this.teamName = teamName;
     }
+
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Member> members) {
+        this.members = members;
+    }
 }
