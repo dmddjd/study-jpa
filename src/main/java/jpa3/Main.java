@@ -123,26 +123,31 @@ public class Main {
 //                System.out.println("s : " + s);
 //            }
 
-            Team team1 = new Team();
-            team1.setTeamName("팀1");
-            em.persist(team1);
+            Team teamA = new Team();
+            teamA.setTeamName("팀A");
+            em.persist(teamA);
 
-            Team team2 = new Team();
-            team2.setTeamName("팀2");
-            em.persist(team2);
+            Team teamB = new Team();
+            teamB.setTeamName("팀B");
+            em.persist(teamB);
 
             Member member1 = new Member();
-            member1.setUserName("관리자1");
-            member1.setTeam(team1);
+            member1.setUserName("회원1");
+            member1.setTeam(teamA);
             em.persist(member1);
 
             Member member2 = new Member();
-            member2.setUserName("관리자2");
-            member2.setTeam(team2);
+            member2.setUserName("회원2");
+            member2.setTeam(teamA);
             em.persist(member2);
 
-            em.flush();
-            em.clear();
+            Member member3 = new Member();
+            member3.setUserName("회원3");
+            member3.setTeam(teamB);
+            em.persist(member3);
+
+//            em.flush();
+//            em.clear();
 
             // 경로 표현식
             // 1. 상태 필드
@@ -158,14 +163,54 @@ public class Main {
             // 묵시적 내부 조인 발생
             // 탐색 불가
 //            String query = "select t.members from Team t";
-            String query = "select m.userName from Team t join t.members m";
+//            String query = "select m.userName from Team t join t.members m";
 
 //            Collection result = em.createQuery(query, Collection.class).getResultList();
-            List<String> result = em.createQuery(query, String.class).getResultList();
+//            List<String> result = em.createQuery(query, String.class).getResultList();
 
-            for (Object s : result) {
-                System.out.println("s : " + s);
-            }
+
+//            for (Object s : result) {
+//                System.out.println("s : " + s);
+//            }
+
+            // 패치 조인
+//            String query = "select distinct t from Team t join fetch t.members";
+//            String query = "select t from Team t";
+//            List<Team> result = em.createQuery(query, Team.class)
+//                    .setFirstResult(0)
+//                    .setMaxResults(2)
+//                    .getResultList();
+//            for (Team team : result) {
+//                System.out.println("team : " + team.getTeamName() + ", " + team.getMembers().size());
+//                for (Member member : team.getMembers()) {
+//                    System.out.println("-> member : " + member);
+//                }
+//            }
+
+//            String query = "select m from Member m where m = :member";
+//            String query = "select m from Member m where m.team = :team";
+//            Member findMember = em.createQuery(query, Member.class)
+//                    .setParameter("team", teamB)
+//                    .getSingleResult();
+//            System.out.println("findMember : " + findMember);
+
+            // 네임드 쿼리
+//            List<Member> result = em.createNamedQuery("Member.findByUserName", Member.class)
+//                    .setParameter("userName", "회원1")
+//                    .getResultList();
+//            for (Member member : result) {
+//                System.out.println("member : " + member);
+//            }
+
+            // 벌크 연산
+            int resultCount = em.createQuery("update Member m set m.age = 20").executeUpdate();
+            em.clear();
+            System.out.println("resultCount : " + resultCount);
+
+            Member findMember = em.find(Member.class, member1.getId());
+            System.out.println("findMember.getAge : " + findMember.getAge());
+
+            System.out.println("member1.getAge : " + member1.getAge());
 
             et.commit();
         }catch(Exception e) {
